@@ -1,59 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-			xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-            xmlns:models="clr-namespace:MauiPicker;assembly=MauiPicker"
-            xmlns:viewModels="clr-namespace:MauiPicker"
-             x:Class="MauiPicker.MainPage"
-			 x:DataType="viewModels:MainViewModel">
+<ContentPage
+    x:Class="MauiPicker.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:MauiPicker;assembly=MauiPicker"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:MauiPicker"    
+    x:DataType="viewModels:MainViewModel">
 
-	<Grid
-		ColumnDefinitions="*"
-        RowDefinitions="*,*">
-		<CollectionView
-			Grid.Row="0"
-			Grid.Column="0"
-			ItemsSource="{Binding PartAResultLists}"
-			SelectionMode="None">
-			<CollectionView.ItemTemplate>
-				<DataTemplate x:DataType="models:PartAResultList">
-						<Grid Padding="5">
-							<Border>
-								<Grid Padding="10"
-									ColumnDefinitions="Auto,*"
-									RowDefinitions="Auto"
-									RowSpacing="7">
-									<Label Text="Outlet Type:" 
-											Grid.Column="0" Grid.Row="0"
-											HorizontalOptions="End"
-											VerticalOptions="Center"
-											Margin="0,0,0,0"/>
-									<Border
-										Grid.Column="1"
-										Grid.Row="0"
-										Grid.ColumnSpan="2">
-										<Picker
-											Title="Select an Outlet"
-											ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MainViewModel}},									Path=Outlets,Mode=TwoWay}"
-											ItemDisplayBinding="{Binding Name}"
-											SelectedItem="{Binding OutletName}"
-											SelectedIndex="{Binding OutletIndex}">
-										</Picker>
-									</Border>
-								</Grid>
-							</Border>
-						</Grid>
-				</DataTemplate>
-			</CollectionView.ItemTemplate>
-		</CollectionView>
-		<Button
-			Grid.Row="1"
-			Grid.Column="0"
-			Text="Reload List"
-			HorizontalOptions="Center"
-			VerticalOptions="Center"
-			Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MainViewModel}}, Path=LoadResultsCommand}">
-		</Button>
-	</Grid>
+    <Grid ColumnDefinitions="*" RowDefinitions="*,*">
+        <!--<CollectionView
+            Grid.Row="0"
+            Grid.Column="0"
+            ItemsSource="{Binding PartAResultLists}"
+            SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PartAResultList">
+                    <Grid Padding="5">
+                        <Border>
+                            <Grid
+                                Padding="10"
+                                ColumnDefinitions="Auto,*"
+                                RowDefinitions="Auto"
+                                RowSpacing="7">
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Margin="0,0,0,0"
+                                    HorizontalOptions="End"
+                                    Text="Outlet Type:"
+                                    VerticalOptions="Center" />
+                                <Border
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Grid.ColumnSpan="2">
+                                    <Picker
+                                        Title="Select an Outlet"
+                                        ItemDisplayBinding="{Binding Name}"
+                                        ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MainViewModel}}, Path=Outlets, Mode=TwoWay}"
+                                        SelectedIndex="{Binding OutletIndex}"
+                                        SelectedItem="{Binding OutletName}" />
+                                </Border>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>-->
+
+        <Picker
+            Title="Select an Outlet"
+            ItemDisplayBinding="{Binding Name}"
+            ItemsSource="{Binding Outlets}"
+            SelectedItem="{Binding SelectedItemOutlet}" />
+
+
+        <Button
+            Grid.Row="1"
+            Grid.Column="0"
+            HorizontalOptions="Center"
+            Text="Open popup"
+            Command="{Binding OpenPopupCommand}"
+            VerticalOptions="Center" />
+        
+        
+    </Grid>
 
 </ContentPage>

@@ -1,11 +1,16 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MvvmHelpers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MauiPicker
 {
 	public partial class MainViewModel : CommunityToolkit.Mvvm.ComponentModel.ObservableObject
     {
+
+		[ObservableProperty]
+		Outlet selectedItemOutlet;
 
 		public MainViewModel()
 		{
@@ -24,6 +29,7 @@ namespace MauiPicker
 
 			};
 
+			SelectedItemOutlet = Outlets[1];
 
 			PartAResultLists = new ObservableRangeCollection<PartAResultList>
 			{
@@ -35,12 +41,28 @@ namespace MauiPicker
 			};
 		}
 
+        partial void OnSelectedItemOutletChanged(Outlet value)
+        {
+			if(value != null)
+				System.Diagnostics.Debug.WriteLine(value.Name, "OnSelectedItemOutletChanged");
+			else
+                System.Diagnostics.Debug.WriteLine("value = null", "OnSelectedItemOutletChanged");
 
-		[ObservableProperty]
+        }
+
+
+        [ObservableProperty]
 		ObservableRangeCollection<Outlet> outlets;
 
 		[ObservableProperty]
 		ObservableRangeCollection<PartAResultList> partAResultLists;
+        [RelayCommand]
+        async Task OpenPopupAsync()
+		{
+            var popup = new MyPopupPage();
+            var ret = await Application.Current.MainPage.ShowPopupAsync(popup);
 
-	}
+        }
+
+    }
 }
