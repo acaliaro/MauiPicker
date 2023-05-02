@@ -9,6 +9,16 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+
+            <Style TargetType="Grid">
+                <Setter Property="RowSpacing">
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS" Value="10" />
+                    </OnPlatform>
+                </Setter>
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -31,7 +31,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-	  <CodesignKey>Apple Development: Andrea Todeschini (R4S5W3UCNH)</CodesignKey>
+	  <CodesignKey>Apple Development: Andrea Todeschini (94U5Q59BTR)</CodesignKey>
 	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
 	</PropertyGroup>
 

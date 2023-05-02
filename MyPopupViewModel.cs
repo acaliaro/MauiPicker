@@ -12,6 +12,9 @@ namespace MauiPicker
         }
 
         [ObservableProperty]
+        bool areControlsVisible;
+
+        [ObservableProperty]
         Outlet selectedItemOutlet;
 
         [ObservableProperty]
@@ -58,6 +61,12 @@ namespace MauiPicker
         async Task ShowDisplayAlertAsync()
         {
             await Shell.Current.DisplayAlert("Attenzione", "Showed!", "Ok");
+        }
+
+        [RelayCommand]
+        void ShowOtherControls()
+        {
+            AreControlsVisible = !AreControlsVisible;
         }
 
     }

@@ -30,6 +30,14 @@
             Command="{Binding ShowDisplayAlertCommand}"
             VerticalOptions="Center" />
 
+        <Grid RowDefinitions="Auto" ColumnDefinitions="*,*" ColumnSpacing="10">
+            
+            <Entry Grid.Row="0" Grid.Column="0" Text="Label 1"/>
+
+            <Entry Grid.Row="0" Grid.Column="1" Text="Label 2"/>
+
+        </Grid>
+
     </VerticalStackLayout>
 
 </ContentPage>

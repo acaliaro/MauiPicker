@@ -4,24 +4,52 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
-    <VerticalStackLayout Spacing="10" HeightRequest="200" WidthRequest="200">
-        <Label
-            HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
 
-        <Picker
-            Title="Select an Outlet"
-            ItemDisplayBinding="{Binding Name}"
-            ItemsSource="{Binding Outlets}"
-            SelectedItem="{Binding SelectedItemOutlet}" />
+    <VerticalStackLayout Spacing="10">
 
-        <Button
-            HorizontalOptions="Center"
-            Text="Show Display Alert"
-            Command="{Binding ShowDisplayAlertCommand}"
-            VerticalOptions="Center" />
+        <Border
+            Margin="10"
+            Padding="4,6"
+            SizeChanged="Border_SizeChanged">
 
+            <VerticalStackLayout>
+                <Label
+                    HorizontalOptions="Center"
+                    Text="Welcome to .NET MAUI!"
+                    VerticalOptions="Center" />
 
+                <Picker
+                    Title="Select an Outlet"
+                    ItemDisplayBinding="{Binding Name}"
+                    ItemsSource="{Binding Outlets}"
+                    SelectedItem="{Binding SelectedItemOutlet}" />
+
+                <Button
+                    Command="{Binding ShowDisplayAlertCommand}"
+                    HorizontalOptions="Center"
+                    Text="Show Display Alert"
+                    VerticalOptions="Center" />
+
+                <Button
+                    Command="{Binding ShowOtherControlsCommand}"
+                    HorizontalOptions="Center"
+                    Text="Show Other Controls"
+                    VerticalOptions="Center" />
+
+                <StackLayout IsVisible="{Binding AreControlsVisible}">
+                    <Label Text="this is a label" />
+
+                    <Entry Placeholder="this is an entry" />
+
+                    <CheckBox />
+
+                    <Button Text="this is a button" />
+
+                    <Picker Title="this is a picker" />
+
+                </StackLayout>
+
+            </VerticalStackLayout>
+        </Border>
     </VerticalStackLayout>
 </mct:Popup>
