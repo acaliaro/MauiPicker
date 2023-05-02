@@ -54,5 +54,11 @@ namespace MauiPicker
         }
 
 
+        [RelayCommand]
+        async Task ShowDisplayAlertAsync()
+        {
+            await Shell.Current.DisplayAlert("Attenzione", "Showed!", "Ok");
+        }
+
     }
 }
