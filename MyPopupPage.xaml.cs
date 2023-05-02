@@ -4,11 +4,11 @@ namespace MauiPicker;
 
 public partial class MyPopupPage : Popup
 {
-	public MyPopupPage()
-	{
-		InitializeComponent();
-		this.BindingContext = new MyPopupViewModel();
-	}
+    public MyPopupPage()
+    {
+        InitializeComponent();
+        this.BindingContext = new MyPopupViewModel();
+    }
 
     private void Border_SizeChanged(object sender, EventArgs e)
     {
@@ -26,5 +26,14 @@ public partial class MyPopupPage : Popup
         height = (int)height;
         Size = new Size(0.6 * (DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density), height + 20);
 
+    }
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+        MainThread.BeginInvokeOnMainThread(async () =>
+        {
+            MySecondPopupPage popupPage = new MySecondPopupPage();
+            await Application.Current.MainPage.ShowPopupAsync(popupPage);
+        });
     }
 }

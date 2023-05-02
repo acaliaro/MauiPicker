@@ -18,6 +18,8 @@
                     Text="Welcome to .NET MAUI!"
                     VerticalOptions="Center" />
 
+                <Button Text="Show second popup" Clicked="Button_Clicked"/>
+
                 <Picker
                     Title="Select an Outlet"
                     ItemDisplayBinding="{Binding Name}"
